@@ -1,0 +1,1 @@
+self.__NEXT_FONT_MANIFEST="{\"pages\":{},\"app\":{\"/home/arth/code100x/algorithmic-arena/apps/web/app/layout\":[\"static/media/39498105ba7af3d1-s.p.woff2\",\"static/media/c22ccc5eb58b83e1-s.p.woff2\"]},\"appUsingSizeAdjust\":true,\"pagesUsingSizeAdjust\":false}"
