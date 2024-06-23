@@ -1,4 +1,4 @@
-name: CI
+name: Populate problems
 
 on:
   push:
