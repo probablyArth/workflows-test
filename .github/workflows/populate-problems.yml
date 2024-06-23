@@ -29,7 +29,6 @@ jobs:
         uses: tj-actions/changed-files@v39
       - name: List all changed files and add them to DB
         run: |
-          echo $DATABASE_URL
           cd ./packages/db
           npm i -g ts-node
           for file in ${{ steps.changed-files.outputs.all_changed_files }}; do
