@@ -21,6 +21,7 @@ jobs:
           node-version: 20
       - name: Install dependencies
         run: |
+          cd ./packages/db
           npm ci
       - name: Get changed files
         id: changed-files
@@ -30,7 +31,6 @@ jobs:
           DATABASE_URL: ${{ secrets.DATABASE_URL }}
         run: |
           cd ./packages/db
-          npm ci
           npm i -g ts-node
           for file in ${{ steps.changed-files.outputs.all_changed_files }}; do
             if [[ "$file" == apps/problems/* ]]; then
