@@ -32,7 +32,7 @@ jobs:
         run:
           for file in ${{ steps.changed-files.outputs.all_changed_files }}; do
             if [[ "$file" == apps/problems/* ]]; then
-              folderName = $(awk -F/ '{print $2}' <<< "$file")
+              folderName=$(awk -F/ '{print $3}' <<< "$file")
               echo "Populating for $folderName"
               npm run addProblem -- $folderName
             fi
