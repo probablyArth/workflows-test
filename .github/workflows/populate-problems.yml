@@ -31,12 +31,16 @@ jobs:
         run: |
           cd ./packages/db
           npm i -g ts-node
+          declare -A folderSet
           for file in ${{ steps.changed-files.outputs.all_changed_files }}; do
             if [[ "$file" == apps/problems/* ]]; then
               folderName=$(awk -F/ '{print $3}' <<< "$file")
-              echo "Populating for $folderName"
-              npm run addProblem -- $folderName
+              folderSet["$folderName"]=1
             fi
+          done
+          for folderName in "${!folderSet[@]}"; do
+            echo "Populating for $folderName"
+            npm run addProblem -- $folderName
           done
         env:
           DATABASE_URL: ${{ secrets.DATABASE_URL }}
