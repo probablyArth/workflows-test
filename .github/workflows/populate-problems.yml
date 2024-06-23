@@ -23,6 +23,7 @@ jobs:
         run: |
           cd ./packages/db
           npm i
+          npx prisma generate
       - name: Get changed files
         id: changed-files
         uses: tj-actions/changed-files@v39
