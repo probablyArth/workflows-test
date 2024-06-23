@@ -4,8 +4,8 @@ on:
   push:
     branches:
       - main
-    # paths:
-    #   - "apps/problems/**"
+    paths:
+      - "apps/problems/**"
 
 jobs:
   populate_problems:
@@ -31,9 +31,9 @@ jobs:
           DATABASE_URL: ${{ secrets.DATABASE_URL }}
         run:
           for file in ${{ steps.changed-files.outputs.all_changed_files }}; do
-          if [[ "$file" == apps/problems/* ]]; then
-          folderName = $(awk -F/ '{print $2}' <<< "$file")
-          echo "Populating for $folderName"
-          npm run addProblem -- $folderName
-          fi
+            if [[ "$file" == apps/problems/* ]]; then
+              folderName = $(awk -F/ '{print $2}' <<< "$file")
+              echo "Populating for $folderName"
+              npm run addProblem -- $folderName
+            fi
           done
