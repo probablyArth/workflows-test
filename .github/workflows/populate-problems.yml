@@ -6,15 +6,14 @@ on:
       - main
     paths:
       - "apps/problems/**"
-defaults:
-  run:
-    working-directory: ./packages/db
 
 jobs:
   setup_node:
     name: Setup Node
     runs-on: ubuntu-latest
-
+    defaults:
+      run:
+        working-directory: ./packages/db
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
@@ -25,6 +24,9 @@ jobs:
           node-version: 20
 
   install_dependencies:
+    defaults:
+      run:
+        working-directory: ./packages/db
     name: Install Dependencies
     runs-on: ubuntu-latest
     needs: [setup_node]
@@ -33,6 +35,9 @@ jobs:
         run: npm ci
 
   populate_problems:
+    defaults:
+      run:
+        working-directory: ./packages/db
     name: Populate problems
     needs: [setup_node, install_dependencies]
     runs-on: ubuntu-latest
