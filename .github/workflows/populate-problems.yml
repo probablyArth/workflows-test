@@ -29,7 +29,7 @@ jobs:
       - name: Install dependencies
         run: |
           ls -la ${{ github.workspace }}
-          cd ${{ github.workspace }}/packages/db
+          cd ../packages/db
           npm ci
 
   populate_problems:
