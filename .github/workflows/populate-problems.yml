@@ -28,7 +28,7 @@ jobs:
         uses: tj-actions/changed-files@v39
       - name: List all changed files and add them to DB
         env:
-          DATABASE_URL: ${{ secrets.DATABASE_URL }}
+          DATABASE_URL: hello
         run: |
           echo $DATABASE_URL
           cd ./packages/db
