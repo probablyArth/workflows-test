@@ -24,11 +24,13 @@ jobs:
     name: Install Dependencies
     runs-on: ubuntu-latest
     needs: [setup_node]
+
     steps:
-      - name: ls
-        run: ls $pwd
       - name: Install dependencies
-        run: npm ci
+        run: |
+          ls -la ${{ github.workspace }}/packages/db
+          cd ${{ github.workspace }}/packages/db
+          npm ci
 
   populate_problems:
     name: Populate problems
