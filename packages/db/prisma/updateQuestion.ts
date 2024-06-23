@@ -14,7 +14,7 @@ function promisifedReadFile(path: string): Promise<string> {
   });
 }
 
-export async function addProblem(problemSlug: string, problemTitle: string) {
+export async function addProblem(problemSlug: string, problemTitle: string, hidden: boolean) {
   const problemStatement = await promisifedReadFile(
     `${MOUNT_PATH}/${problemSlug}/Problem.md`
   );
@@ -27,7 +27,7 @@ export async function addProblem(problemSlug: string, problemTitle: string) {
       title: problemSlug,
       slug: problemSlug,
       description: problemStatement,
-      hidden: false,
+      hidden,
     },
     update: {
       description: problemStatement,
@@ -66,7 +66,7 @@ export function addProblemsInDB() {
       return;
     }
     dirs.forEach(async (dir) => {
-      await addProblem(dir, dir);
+      await addProblem(dir, dir, false);
     });
   });
 }
