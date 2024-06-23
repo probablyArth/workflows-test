@@ -30,6 +30,7 @@ jobs:
         env:
           DATABASE_URL: ${{ secrets.DATABASE_URL }}
         run: |
+          cd ./packages/db
           for file in ${{ steps.changed-files.outputs.all_changed_files }}; do
             if [[ "$file" == apps/problems/* ]]; then
               folderName=$(awk -F/ '{print $3}' <<< "$file")
