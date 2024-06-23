@@ -4,8 +4,8 @@ on:
   push:
     branches:
       - main
-    # paths:
-    #   - "apps/problems/**"
+    paths:
+      - "apps/problems/**"
 
 jobs:
   populate_problems:
@@ -39,4 +39,4 @@ jobs:
             fi
           done
         env:
-          DATABASE_URL: hello
+          DATABASE_URL: ${{ secrets.DATABASE_URL }}
